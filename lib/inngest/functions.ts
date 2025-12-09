@@ -4,7 +4,7 @@ import {sendNewsSummaryEmail, sendWelcomeEmail} from "@/lib/nodemailer";
 import {getAllUsersForNewsEmail} from "@/lib/actions/user.actions";
 import {getNews} from "@/lib/actions/finnhub.actions";
 import {getWatchlistSymbolsByEmail} from "@/lib/actions/watchList.actions";
-import {formatDateToday} from "@/lib/utils";
+import {formatDateToday, getFormattedTodayDate} from "@/lib/utils";
 
 export const sendSignUpEmail = inngest.createFunction(
     {id: "sign-up-email"},
@@ -119,7 +119,7 @@ export const sendDailyNewsSummary = inngest.createFunction(
                 userNewsSummaries.map(async ({user, newsContent}) => {
                     if (!newsContent) return false;
 
-                    return await sendNewsSummaryEmail({email: user.email, date: formatDateToday, newsContent});
+                    return await sendNewsSummaryEmail({email: user.email, date: getFormattedTodayDate(), newsContent});
                 })
             )
         })
