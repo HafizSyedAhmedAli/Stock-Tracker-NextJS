@@ -23,7 +23,7 @@ export {fetchJSON};
 export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> {
     try {
         const range = getDateRange(5);
-        const token = NEXT_PUBLIC_FINNHUB_API_KEY;
+        const token = FINNHUB_API_KEY;
 
         const cleanSymbols = (symbols || [])
             .map((s) => s?.trim().toUpperCase())
