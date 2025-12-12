@@ -37,7 +37,7 @@ const WatchlistTable = ({watchlist}: WatchlistTableProps) => {
                             {item.priceFormatted || "-"}
                         </TableCell>
                         <TableCell className={cn("table-cell", getChangeColorClass(item.changePercent))}>
-                            {item.symbol}
+                            {item.changeFormatted}
                         </TableCell>
                         <TableCell className="table-cell">
                             {item.marketCap || "-"}

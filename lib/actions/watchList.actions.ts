@@ -40,6 +40,7 @@ export async function addToWatchlist(symbol: string, company: string) {
     if (!session?.user) redirect("/sign-in");
 
     try {
+        await connectDB();
         const existingItem = await Watchlist.findOne({
             userId: session.user.id,
             symbol: symbol?.toUpperCase(),
@@ -71,6 +72,7 @@ export async function removeFromWatchlist(symbol: string) {
     if (!session?.user) redirect("/sign-in");
 
     try {
+        await connectDB();
         await Watchlist.deleteOne({
             userId: session.user.id,
             symbol: symbol?.toUpperCase(),
@@ -93,6 +95,7 @@ export async function getUserWatchlist() {
     if (!session?.user) redirect('/sign-in');
 
     try {
+        await connectDB();
         const watchList = await Watchlist.find({userId: session.user.id}).sort({addedAt: 1}).lean();
 
         return JSON.parse(JSON.stringify(watchList));
@@ -109,6 +112,7 @@ export async function getWatchlistWithData() {
     if (!session?.user) redirect('/sign-in');
 
     try {
+        await connectDB();
         const watchList = await Watchlist.find({userId: session.user.id}).sort({addedAt: 1}).lean();
 
         if (watchList.length === 0) return [];

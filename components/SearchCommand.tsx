@@ -1,17 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import {
-    CommandDialog,
-    CommandEmpty,
-    CommandInput,
-    CommandList,
-} from '@/components/ui/command';
-import { Button } from '@/components/ui/button';
-import { Loader2, TrendingUp } from 'lucide-react';
+import {useEffect, useState} from 'react';
+import {CommandDialog, CommandEmpty, CommandInput, CommandList,} from '@/components/ui/command';
+import {Button} from '@/components/ui/button';
+import {Loader2, TrendingUp} from 'lucide-react';
 import Link from 'next/link';
-import { searchStocks } from '@/lib/actions/finnhub.actions';
-import { useDebounce } from '@/hooks/useDebounce';
+import {searchStocks} from '@/lib/actions/finnhub.actions';
+import {useDebounce} from '@/hooks/useDebounce';
 import WatchlistButton from "@/components/WatchListButton";
 
 export default function SearchCommand({
@@ -68,9 +63,9 @@ export default function SearchCommand({
     // Handle watchlist changes status change
     const handleWatchlistChange = async (symbol: string, isAdded: boolean) => {
         // Update current stocks
-        setStocks(
-            initialStocks?.map((stock) =>
-                stock.symbol === symbol ? { ...stock, isInWatchlist: isAdded } : stock
+        setStocks((prevStocks) =>
+            prevStocks?.map((stock) =>
+                stock.symbol === symbol ? {...stock, isInWatchlist: isAdded} : stock
             ) || []
         );
     };
@@ -98,7 +93,7 @@ export default function SearchCommand({
                         placeholder='Search stocks...'
                         className='search-input'
                     />
-                    {loading && <Loader2 className='search-loader' />}
+                    {loading && <Loader2 className='search-loader'/>}
                 </div>
                 <CommandList className='search-list'>
                     {loading ? (
@@ -122,7 +117,7 @@ export default function SearchCommand({
                                         onClick={handleSelectStock}
                                         className='search-item-link'
                                     >
-                                        <TrendingUp className='h-4 w-4 text-gray-500' />
+                                        <TrendingUp className='h-4 w-4 text-gray-500'/>
                                         <div className='flex-1'>
                                             <div className='search-item-name'>{stock.name}</div>
                                             <div className='text-sm text-gray-500'>
