@@ -2,7 +2,7 @@
 
 A modern, full-stack stock market tracking application built with Next.js 16, TypeScript, and Tailwind CSS. This project provides real-time stock data visualization, user authentication, personalized watchlists, and comprehensive market insights.
 
-Live Demo: [![Signalist Logo](public/assets/icons/logo.svg)](https://stock-tracker-next-js.vercel.app/)
+Live Demo: [https://stock-tracker-next-js.vercel.app/](https://stock-tracker-next-js.vercel.app/)
 
 ---
 
